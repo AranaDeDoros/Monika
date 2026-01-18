@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Setup Nim
-        uses: jason-morley/setup-nim-action@v1
+        uses: jiro4989/setup-nim-action@v1
         with:
           nim-version: ${{ matrix.nim-version }}
 
