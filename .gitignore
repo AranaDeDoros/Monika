@@ -1,0 +1,15 @@
+# Binaries
+bin/
+tmonika
+tmonika.exe
+
+# Nim specific
+nimcache/
+nimhf/
+*.js
+*.exe
+*.wasm
+
+# Nimble
+nmcache/
+src/Test.nim
