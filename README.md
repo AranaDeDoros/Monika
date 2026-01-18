@@ -24,17 +24,19 @@ requires "monika >= 0.1.0"
 Or install via command line:
 
 ```bash
-nimble install https://github.com/AranaDeDoros/monika
+nimble install https://github.com/AranaDeDoros/Monika
 ```
 
 ---
 
 ## Usage
 
-Monika uses a converter to extend standard strings. Simply import monika and start using the utility methods.
+Monika uses a converter to extend standard strings. Simply import Monika and start using the utility methods.
 
 ```nim
 import monika/japaneseutils
+import monika/punctuation
+import monika/halfwidthconverter
 
 if "こんにちは".hasHiragana:
   echo "Contains Hiragana!"
@@ -52,8 +54,6 @@ echo "ハロー、ワールド！".toHalfWidth
 # Check for voiced marks
 if "が".hasDakuten:
   echo "This character is voiced."
-
-import monika
 
 let msg = "Hello"
 echo msg.wrapInSingleQuotes # Output: 「Hello」
