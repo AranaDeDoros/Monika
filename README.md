@@ -58,6 +58,20 @@ if "が".hasDakuten:
 let msg = "Hello"
 echo msg.wrapInSingleQuotes # Output: 「Hello」
 echo msg.wrapInDoubleQuotes # Output: 『Hello』
+
+let s = "ガキ"
+let h = "が".asRune()
+let k = "エ".asRune()
+
+if h.isSome:
+  echo h.get.hiraToKata() # Output: カ
+else:
+  echo "empty string"
+
+if k.isSome:
+  echo k.get.kataToHira() # Output: え
+else:
+  echo "empty string"
 ```
 
 ---

@@ -1,6 +1,6 @@
-import std/unicode, std/sequtils
+import std/unicode
 import punctuation, kanadiacritics
-export punctuation, kanadiacritics
+import options
 
 const
   HIRAGANA_LOWER* = 0x3040
@@ -25,6 +25,18 @@ proc isKanji*(c: Rune): bool =
   let asInt = c.int
   asInt >= KANJI_LOWER and asInt <= KANJI_UPPER
 
+proc hiraToKata*(c: Rune): Rune =
+  if c.int >= 0x3041 and c.int <= 0x3096:
+    Rune(c.int + 0x60)
+  else:
+    c
+
+proc kataToHira*(c: Rune): Rune =
+  if c.int >= 0x30A1 and c.int <= 0x30F6:
+    Rune(c.int - 0x60)
+  else:
+    c
+
 # string utilities
 proc containsHiragana*(s: string): bool =
   for r in s.runes:
@@ -46,6 +58,18 @@ proc containsDakuten*(s: string): bool =
 
 proc containsHandakuten*(s: string): bool =
   kanadiacritics.hasHandakuten(s)
+
+proc hiraToKata*(s: string): string =
+  result = ""
+  for r in s.runes:
+    result.add $(hiraToKata(r))
+  return result
+
+proc kataToHira*(s: string): string =
+  result = ""
+  for r in s.runes:
+    result.add $(kataToHira(r))
+  return result
 
 # wrapper
 type
@@ -75,3 +99,13 @@ proc wrapInSingleQuotes*(js: JpnStr): string =
 
 proc wrapInDoubleQuotes*(js: JpnStr): string =
   punctuation.wrapInDoubleQuotes(js.value)
+
+proc hiraToKata*(js: JpnStr): string =
+  hiraToKata(js.value)
+
+proc kataToHira*(js: JpnStr): string =
+  kataToHira(js.value)
+
+proc asRune*(s: JpnStr): Option[Rune] =
+  if s.value.len == 0: return none(Rune)
+  some(runeAt(s.value, 0))
