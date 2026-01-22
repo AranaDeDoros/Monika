@@ -1,4 +1,5 @@
 # Monika (モニカ)
+<p align="center"><img width="800" alt="monika" src="https://github.com/user-attachments/assets/4eb2421d-c0d2-4248-ab58-44d4c739914e" /></p>
 
 Monika is a Japanese strings microlibrary for Nim. It provides a clean,
 "implicit-style" API for handling characters, strings, and conversions. Ported from [JpnUtils](https://github.com/AranaDeDoros/JpnUtils).
