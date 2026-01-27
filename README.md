@@ -1,4 +1,5 @@
 # Monika (モニカ)
+
 <p align="center"><img width="800" alt="monika" src="https://github.com/user-attachments/assets/4eb2421d-c0d2-4248-ab58-44d4c739914e" /></p>
 
 Monika is a Japanese strings microlibrary for Nim. It provides a clean,
@@ -73,7 +74,19 @@ if k.isSome:
   echo k.get.kataToHira() # Output: え
 else:
   echo "empty string"
+
+let str = "日本語abcカナ"
+echo str.containsOnly({Kanji, Katakana})  # false
+let summary = str.scriptSummary()
+
+echo summary.hiragana  # 0
+echo summary.katakana  # 2
+echo summary.kanji     # 3
+echo summary.other     # 3
 ```
+
+![Static Badge](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Static Badge](https://img.shields.io/badge/license-MIT-red.svg)
 
 ---
 
