@@ -109,3 +109,41 @@ proc kataToHira*(js: JpnStr): string =
 proc asRune*(s: JpnStr): Option[Rune] =
   if s.value.len == 0: return none(Rune)
   some(runeAt(s.value, 0))
+
+# script analysis
+type JpnScript* = enum
+  Hiragana
+  Katakana
+  Kanji
+  Other
+
+proc scriptOf*(r: Rune): JpnScript =
+  if r.isHiragana: Hiragana
+  elif r.isKatakana: Katakana
+  elif r.isKanji: Kanji
+  else: Other
+
+
+proc containsOnly*(s: string, allowed: set[JpnScript]): bool =
+  for r in s.runes:
+    if scriptOf(r) notin allowed:
+      return false
+  return true
+
+
+type JpnScriptSummary* = object
+  hiragana*: int
+  katakana*: int
+  kanji*: int
+  other*: int
+
+
+proc scriptSummary*(s: string): JpnScriptSummary =
+  for r in s.runes:
+    case scriptOf(r)
+      of Hiragana: inc result.hiragana
+      of Katakana: inc result.katakana
+      of Kanji: inc result.kanji
+      of Other: inc result.other
+
+
