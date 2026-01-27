@@ -30,7 +30,7 @@ suite "Monika Japanese String Utilities":
     let kataStr = hiraStr.hiraToKata()
     check kataStr == "アイウエオ"
 
-   test "katakana to hiragana":
+  test "katakana to hiragana":
     let kataStr = "アイウエオ"
     let hiraStr = kataStr.kataToHira()
     check hiraStr == "あいうえお"
