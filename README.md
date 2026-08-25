@@ -6,7 +6,7 @@ Monika is a Japanese strings microlibrary for Nim. It provides a clean,
 "implicit-style" API for handling characters, strings, and conversions. Ported from [JpnUtils](https://github.com/AranaDeDoros/JpnUtils).
 
 ![Static Badge](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![Static Badge](https://img.shields.io/badge/license-MIT-red.svg)
+![Static Badge](https://img.shields.io/badge/license-GPLv3-red.svg)
 
 
 ## Features
